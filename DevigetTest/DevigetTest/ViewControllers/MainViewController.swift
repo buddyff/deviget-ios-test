@@ -75,6 +75,11 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PostCell else { return }
+        let post = posts[indexPath.item]
+        
+        cell.markAsRead()
+        presenter.readPostWith(id: post.id)
         self.performSegue(withIdentifier: "PostDetail", sender: self)
     }
 }

@@ -25,6 +25,7 @@ struct PostData: Decodable {
     var comments: Int
     var thumbnail: String?
     var created: Float
+    var id: String
     
     enum CodingKeys: String, CodingKey {
         case author
@@ -32,5 +33,6 @@ struct PostData: Decodable {
         case comments = "num_comments"
         case thumbnail
         case created = "created_utc"
+        case id
     }
 }

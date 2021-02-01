@@ -21,9 +21,11 @@ final class MainPresenter {
                     let posts: [PostCellInfo] = response.data.children.map { (post) -> PostCellInfo in
                         let createdDate = post.data.created.toDate()
                         let hoursDiff = Date().hoursDiff(date: createdDate)
+                        let isRead = UserDefaults.standard.bool(forKey: post.data.id) ?? false
                         
                         return PostCellInfo(
-                            read: false,
+                            id: post.data.id,
+                            read: isRead,
                             title: post.data.title,
                             thumbnail: post.data.thumbnail,
                             author: post.data.author,
@@ -37,5 +39,9 @@ final class MainPresenter {
                 print(error)
             }
         }
+    }
+    
+    func readPostWith(id: String) {
+        UserDefaults.standard.setValue(true, forKey: id)
     }
 }

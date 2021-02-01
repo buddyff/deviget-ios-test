@@ -32,9 +32,14 @@ class PostCell: UITableViewCell {
             self.picture.load(url: url)
         }
     }
+    
+    func markAsRead() {
+        unreadStatus.isHidden = true
+    }
 }
 
 struct PostCellInfo {
+    var id: String
     var read: Bool
     var title: String
     var thumbnail: String?
