@@ -17,6 +17,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dismissBtn: UIButton!
     @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
     
     func updateWith(postInfo: PostCellInfo) {
         unreadStatus.isHidden = postInfo.read
@@ -24,6 +25,8 @@ class PostCell: UITableViewCell {
         titleLabel.text = postInfo.title
         commentsLabel.text = postInfo.comments
         timeLabel.text = postInfo.time
+        arrowImage.image = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
+        arrowImage.tintColor = .white
         
         if let url = URL(string: postInfo.thumbnail ?? "") {
             self.picture.load(url: url)
