@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BA825C82C900061B74A /* AppDelegate.swift */; };
-		FB460BAB25C82C900061B74A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BAA25C82C900061B74A /* SceneDelegate.swift */; };
 		FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BAC25C82C900061B74A /* MainViewController.swift */; };
 		FB460BB025C82C900061B74A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB460BAE25C82C900061B74A /* Main.storyboard */; };
 		FB460BB225C82C910061B74A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB460BB125C82C910061B74A /* Assets.xcassets */; };
@@ -28,6 +27,7 @@
 		FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2225C86B810061B74A /* UIImageView+Extension.swift */; };
 		FB460C2825C86D010061B74A /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2725C86D010061B74A /* Float+Extension.swift */; };
 		FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2F25C870AA0061B74A /* Date+Extension.swift */; };
+		FB460C3825C87DDF0061B74A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C3725C87DDF0061B74A /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 /* Begin PBXFileReference section */
 		FB460BA525C82C900061B74A /* DevigetTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevigetTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB460BA825C82C900061B74A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB460BAA25C82C900061B74A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FB460BAC25C82C900061B74A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FB460BAF25C82C900061B74A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB460BB125C82C910061B74A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		FB460C2225C86B810061B74A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		FB460C2725C86D010061B74A /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		FB460C2F25C870AA0061B74A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		FB460C3725C87DDF0061B74A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = DevigetTest/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 				FB460BDC25C82E2E0061B74A /* ViewControllers */,
 				FB460BDB25C82E1D0061B74A /* Storyboards */,
 				FB460BA825C82C900061B74A /* AppDelegate.swift */,
-				FB460BAA25C82C900061B74A /* SceneDelegate.swift */,
+				FB460C3725C87DDF0061B74A /* SceneDelegate.swift */,
 				FB460BB125C82C910061B74A /* Assets.xcassets */,
 				FB460BB325C82C910061B74A /* LaunchScreen.storyboard */,
 				FB460BB625C82C910061B74A /* Info.plist */,
@@ -390,8 +390,8 @@
 				FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */,
 				FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */,
 				FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */,
-				FB460BAB25C82C900061B74A /* SceneDelegate.swift in Sources */,
 				FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */,
+				FB460C3825C87DDF0061B74A /* SceneDelegate.swift in Sources */,
 				FB460C1425C84A6A0061B74A /* MainRepository.swift in Sources */,
 				FB460C0825C8437D0061B74A /* MainPresenter.swift in Sources */,
 				FB460C1A25C84B350061B74A /* TopPostsConfiguration.swift in Sources */,

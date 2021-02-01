@@ -24,6 +24,8 @@ class MainViewController: UIViewController, MainProtocol {
         
         table.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
         table.dataSource = self
+        table.delegate = self
+        table.separatorInset = .zero
         
         presenter.delegate = self
         presenter.getTopPosts()
@@ -52,7 +54,12 @@ extension MainViewController: UITableViewDataSource {
         
         return myCell
     }
+}
+
+extension MainViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "PostDetail", sender: self)
+    }
 }
 
