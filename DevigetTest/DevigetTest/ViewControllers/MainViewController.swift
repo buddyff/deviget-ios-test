@@ -7,9 +7,17 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+protocol MainProtocol: AnyObject {
+    func reloadTableWith(posts: [PostCellInfo])
+}
+
+class MainViewController: UIViewController, MainProtocol {
 
     @IBOutlet weak var table: UITableView!
+    
+    private var posts: [PostCellInfo] = []
+    
+    private let presenter: MainPresenter = MainPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,22 +25,30 @@ class MainViewController: UIViewController {
         table.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
         table.dataSource = self
         
+        presenter.delegate = self
+        presenter.getTopPosts()
     }
-
+    
+    func reloadTableWith(posts: [PostCellInfo]) {
+        self.posts = posts
+        table.reloadData()
+    }
 
 }
 
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let myCell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell
             else { return UITableViewCell() }
         
-        myCell.update(read: false, author: "Rodrigo Ignacio Camparo", picture: nil, title: "Lorem ipsum", comments: "19 comments")
+        let post = posts[indexPath.item]
+        
+        myCell.updateWith(postInfo: post)
         
         return myCell
     }

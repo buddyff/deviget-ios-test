@@ -21,6 +21,13 @@
 		FB460BF425C83C4D0061B74A /* NetworkConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BF325C83C4D0061B74A /* NetworkConnector.swift */; };
 		FB460BF925C83C950061B74A /* NetworkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BF825C83C950061B74A /* NetworkSettings.swift */; };
 		FB460C0025C83E140061B74A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BFF25C83E140061B74A /* Log.swift */; };
+		FB460C0825C8437D0061B74A /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C0725C8437D0061B74A /* MainPresenter.swift */; };
+		FB460C0E25C847070061B74A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C0D25C847070061B74A /* Post.swift */; };
+		FB460C1425C84A6A0061B74A /* MainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C1325C84A6A0061B74A /* MainRepository.swift */; };
+		FB460C1A25C84B350061B74A /* TopPostsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C1925C84B350061B74A /* TopPostsConfiguration.swift */; };
+		FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2225C86B810061B74A /* UIImageView+Extension.swift */; };
+		FB460C2825C86D010061B74A /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2725C86D010061B74A /* Float+Extension.swift */; };
+		FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2F25C870AA0061B74A /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,13 @@
 		FB460BF325C83C4D0061B74A /* NetworkConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnector.swift; sourceTree = "<group>"; };
 		FB460BF825C83C950061B74A /* NetworkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSettings.swift; sourceTree = "<group>"; };
 		FB460BFF25C83E140061B74A /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		FB460C0725C8437D0061B74A /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		FB460C0D25C847070061B74A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FB460C1325C84A6A0061B74A /* MainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
+		FB460C1925C84B350061B74A /* TopPostsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPostsConfiguration.swift; sourceTree = "<group>"; };
+		FB460C2225C86B810061B74A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		FB460C2725C86D010061B74A /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		FB460C2F25C870AA0061B74A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +125,8 @@
 		FB460BA725C82C900061B74A /* DevigetTest */ = {
 			isa = PBXGroup;
 			children = (
+				FB460C1225C84A5F0061B74A /* Repository */,
+				FB460C0C25C846FF0061B74A /* Entities */,
 				FB460BFD25C83E050061B74A /* Common */,
 				FB460BED25C83BAA0061B74A /* Network */,
 				FB460BDD25C82E3A0061B74A /* Presenters */,
@@ -163,6 +179,7 @@
 		FB460BDD25C82E3A0061B74A /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				FB460C0725C8437D0061B74A /* MainPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -179,6 +196,7 @@
 		FB460BED25C83BAA0061B74A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				FB460C1825C84B1C0061B74A /* TopPosts */,
 				FB460BEE25C83BE80061B74A /* NetworkConfigurator.swift */,
 				FB460BF325C83C4D0061B74A /* NetworkConnector.swift */,
 				FB460BF825C83C950061B74A /* NetworkSettings.swift */,
@@ -189,6 +207,7 @@
 		FB460BFD25C83E050061B74A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FB460C2125C86B700061B74A /* Extensions */,
 				FB460BFE25C83E0C0061B74A /* Logger */,
 			);
 			path = Common;
@@ -200,6 +219,40 @@
 				FB460BFF25C83E140061B74A /* Log.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		FB460C0C25C846FF0061B74A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FB460C0D25C847070061B74A /* Post.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FB460C1225C84A5F0061B74A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FB460C1325C84A6A0061B74A /* MainRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FB460C1825C84B1C0061B74A /* TopPosts */ = {
+			isa = PBXGroup;
+			children = (
+				FB460C1925C84B350061B74A /* TopPostsConfiguration.swift */,
+			);
+			path = TopPosts;
+			sourceTree = "<group>";
+		};
+		FB460C2125C86B700061B74A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FB460C2225C86B810061B74A /* UIImageView+Extension.swift */,
+				FB460C2725C86D010061B74A /* Float+Extension.swift */,
+				FB460C2F25C870AA0061B74A /* Date+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,12 +388,19 @@
 			files = (
 				FB460BF425C83C4D0061B74A /* NetworkConnector.swift in Sources */,
 				FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */,
+				FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */,
 				FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */,
 				FB460BAB25C82C900061B74A /* SceneDelegate.swift in Sources */,
+				FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */,
+				FB460C1425C84A6A0061B74A /* MainRepository.swift in Sources */,
+				FB460C0825C8437D0061B74A /* MainPresenter.swift in Sources */,
+				FB460C1A25C84B350061B74A /* TopPostsConfiguration.swift in Sources */,
 				FB460BEF25C83BE80061B74A /* NetworkConfigurator.swift in Sources */,
 				FB460BE925C8356C0061B74A /* PostCell.swift in Sources */,
 				FB460C0025C83E140061B74A /* Log.swift in Sources */,
 				FB460BF925C83C950061B74A /* NetworkSettings.swift in Sources */,
+				FB460C2825C86D010061B74A /* Float+Extension.swift in Sources */,
+				FB460C0E25C847070061B74A /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,9 +10,9 @@ import Foundation
 struct NetworkSetting {
     static var baseURLString: String {
         #if DEBUG
-            return "https://www.reddit.com/r/subreddit/top.json"
+            return "https://www.reddit.com"
         #else
-            return "https://www.reddit.com/r/subreddit/top.json"
+            return "https://www.reddit.com"
         #endif
     }
 }

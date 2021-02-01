@@ -18,11 +18,24 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var dismissBtn: UIButton!
     @IBOutlet weak var commentsLabel: UILabel!
     
-    func update(read: Bool, author: String, picture: String?, title: String, comments: String) {
-        unreadStatus.isHidden = read
-        authorLabel.text = author
-        titleLabel.text = title
-        commentsLabel.text = comments
+    func updateWith(postInfo: PostCellInfo) {
+        unreadStatus.isHidden = postInfo.read
+        authorLabel.text = postInfo.author
+        titleLabel.text = postInfo.title
+        commentsLabel.text = postInfo.comments
+        timeLabel.text = postInfo.time
+        
+        if let url = URL(string: postInfo.thumbnail ?? "") {
+            self.picture.load(url: url)
+        }
     }
-    
+}
+
+struct PostCellInfo {
+    var read: Bool
+    var title: String
+    var thumbnail: String?
+    var author: String
+    var comments: String
+    var time: String
 }
