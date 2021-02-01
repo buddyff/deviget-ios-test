@@ -14,6 +14,12 @@ protocol MainProtocol: AnyObject {
 class MainViewController: UIViewController, MainProtocol {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var tableWidth: NSLayoutConstraint!
+    @IBOutlet weak var rightPanel: UIView!
+    @IBOutlet weak var rightPanelTitle: UILabel!
+    @IBOutlet weak var rightPanelPicture: UIImageView!
+    @IBOutlet weak var rightPanelContent: UILabel!
+    @IBOutlet weak var rightPanelWidth: NSLayoutConstraint!
     
     private var posts: [PostCellInfo] = []
     
@@ -29,6 +35,8 @@ class MainViewController: UIViewController, MainProtocol {
         
         presenter.delegate = self
         presenter.getTopPosts()
+        
+        responsiveHelper(UIScreen.main.bounds.size)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,11 +55,28 @@ class MainViewController: UIViewController, MainProtocol {
         }
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        responsiveHelper(size)
+    }
+    
     func reloadTableWith(posts: [PostCellInfo]) {
         self.posts = posts
         table.reloadData()
     }
 
+    private func responsiveHelper(_ size: CGSize) {
+        print(size)
+        if UIDevice.current.orientation.isLandscape {
+            tableWidth.constant = -(size.width * 0.6)
+            rightPanelWidth.constant = size.width * 0.6
+            rightPanel.isHidden = false
+        } else {
+            tableWidth.constant = 0
+            rightPanelWidth.constant = 0
+            rightPanel.isHidden = true
+        }
+    }
 }
 
 
@@ -76,11 +101,20 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? PostCell else { return }
-        let post = posts[indexPath.item]
+        var post = posts[indexPath.item]
         
-        cell.markAsRead()
         presenter.readPostWith(id: post.id)
-        self.performSegue(withIdentifier: "PostDetail", sender: self)
+        
+        if !rightPanel.isHidden {
+            rightPanelTitle.text = post.author
+            rightPanelContent.text = post.title
+            if let url = URL(string: post.thumbnail ?? "") {
+                rightPanelPicture.load(url: url)
+            }
+        } else {
+            self.performSegue(withIdentifier: "PostDetail", sender: self)
+        }
+        
     }
 }
 
