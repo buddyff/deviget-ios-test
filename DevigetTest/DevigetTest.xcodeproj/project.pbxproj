@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BA825C82C900061B74A /* AppDelegate.swift */; };
 		FB460BAB25C82C900061B74A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BAA25C82C900061B74A /* SceneDelegate.swift */; };
-		FB460BAD25C82C900061B74A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BAC25C82C900061B74A /* ViewController.swift */; };
+		FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BAC25C82C900061B74A /* MainViewController.swift */; };
 		FB460BB025C82C900061B74A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB460BAE25C82C900061B74A /* Main.storyboard */; };
 		FB460BB225C82C910061B74A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB460BB125C82C910061B74A /* Assets.xcassets */; };
 		FB460BB525C82C910061B74A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB460BB325C82C910061B74A /* LaunchScreen.storyboard */; };
 		FB460BC025C82C910061B74A /* DevigetTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BBF25C82C910061B74A /* DevigetTestTests.swift */; };
 		FB460BCB25C82C910061B74A /* DevigetTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BCA25C82C910061B74A /* DevigetTestUITests.swift */; };
+		FB460BE325C82EE20061B74A /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB460BE225C82EE20061B74A /* PostCell.xib */; };
+		FB460BE925C8356C0061B74A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460BE825C8356C0061B74A /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,7 @@
 		FB460BA525C82C900061B74A /* DevigetTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevigetTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB460BA825C82C900061B74A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB460BAA25C82C900061B74A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FB460BAC25C82C900061B74A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB460BAC25C82C900061B74A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FB460BAF25C82C900061B74A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB460BB125C82C910061B74A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB460BB425C82C910061B74A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		FB460BC625C82C910061B74A /* DevigetTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevigetTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB460BCA25C82C910061B74A /* DevigetTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevigetTestUITests.swift; sourceTree = "<group>"; };
 		FB460BCC25C82C910061B74A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB460BE225C82EE20061B74A /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		FB460BE825C8356C0061B74A /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,11 @@
 		FB460BA725C82C900061B74A /* DevigetTest */ = {
 			isa = PBXGroup;
 			children = (
+				FB460BDD25C82E3A0061B74A /* Presenters */,
+				FB460BDC25C82E2E0061B74A /* ViewControllers */,
+				FB460BDB25C82E1D0061B74A /* Storyboards */,
 				FB460BA825C82C900061B74A /* AppDelegate.swift */,
 				FB460BAA25C82C900061B74A /* SceneDelegate.swift */,
-				FB460BAC25C82C900061B74A /* ViewController.swift */,
-				FB460BAE25C82C900061B74A /* Main.storyboard */,
 				FB460BB125C82C910061B74A /* Assets.xcassets */,
 				FB460BB325C82C910061B74A /* LaunchScreen.storyboard */,
 				FB460BB625C82C910061B74A /* Info.plist */,
@@ -126,6 +131,39 @@
 				FB460BCC25C82C910061B74A /* Info.plist */,
 			);
 			path = DevigetTestUITests;
+			sourceTree = "<group>";
+		};
+		FB460BDB25C82E1D0061B74A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FB460BE725C835560061B74A /* PostCell */,
+				FB460BAE25C82C900061B74A /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FB460BDC25C82E2E0061B74A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB460BAC25C82C900061B74A /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FB460BDD25C82E3A0061B74A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		FB460BE725C835560061B74A /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB460BE225C82EE20061B74A /* PostCell.xib */,
+				FB460BE825C8356C0061B74A /* PostCell.swift */,
+			);
+			path = PostCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +272,7 @@
 				FB460BB525C82C910061B74A /* LaunchScreen.storyboard in Resources */,
 				FB460BB225C82C910061B74A /* Assets.xcassets in Resources */,
 				FB460BB025C82C900061B74A /* Main.storyboard in Resources */,
+				FB460BE325C82EE20061B74A /* PostCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB460BAD25C82C900061B74A /* ViewController.swift in Sources */,
+				FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */,
 				FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */,
 				FB460BAB25C82C900061B74A /* SceneDelegate.swift in Sources */,
+				FB460BE925C8356C0061B74A /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
