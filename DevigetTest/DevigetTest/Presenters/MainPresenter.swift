@@ -22,7 +22,7 @@ final class MainPresenter {
                     self?.posts = response.data.children.map { (post) -> PostCellInfo in
                         let createdDate = post.data.created.toDate()
                         let hoursDiff = Date().hoursDiff(date: createdDate)
-                        let isRead = UserDefaults.standard.bool(forKey: post.data.id) ?? false
+                        let isRead = UserDefaults.standard.bool(forKey: post.data.id)
                         
                         return PostCellInfo(
                             id: post.data.id,

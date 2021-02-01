@@ -45,14 +45,7 @@ class MainViewController: UIViewController, MainProtocol {
         guard let vc = segue.destination as? PostDetailViewController,
               let selectedPostIndex = table.indexPathForSelectedRow?.item else { return }
         
-        let selectedPost = posts[selectedPostIndex]
-        
-        vc.author = selectedPost.author
-        vc.content = selectedPost.title
-        
-        if let url = URL(string: selectedPost.thumbnail ?? "") {
-            vc.pictureURL = url
-        }
+        vc.post = posts[selectedPostIndex]
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -66,7 +59,6 @@ class MainViewController: UIViewController, MainProtocol {
     }
 
     private func responsiveHelper(_ size: CGSize) {
-        print(size)
         if UIDevice.current.orientation.isLandscape {
             tableWidth.constant = -(size.width * 0.6)
             rightPanelWidth.constant = size.width * 0.6
@@ -100,8 +92,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PostCell else { return }
-        var post = posts[indexPath.item]
+        let post = posts[indexPath.item]
         
         presenter.readPostWith(id: post.id)
         
@@ -117,4 +108,3 @@ extension MainViewController: UITableViewDelegate {
         
     }
 }
-
