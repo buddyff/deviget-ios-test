@@ -31,6 +31,22 @@ class MainViewController: UIViewController, MainProtocol {
         presenter.getTopPosts()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let vc = segue.destination as? PostDetailViewController,
+              let selectedPostIndex = table.indexPathForSelectedRow?.item else { return }
+        
+        let selectedPost = posts[selectedPostIndex]
+        
+        vc.author = selectedPost.author
+        vc.content = selectedPost.title
+        
+        if let url = URL(string: selectedPost.thumbnail ?? "") {
+            vc.pictureURL = url
+        }
+    }
+    
     func reloadTableWith(posts: [PostCellInfo]) {
         self.posts = posts
         table.reloadData()

@@ -28,6 +28,7 @@
 		FB460C2825C86D010061B74A /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2725C86D010061B74A /* Float+Extension.swift */; };
 		FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2F25C870AA0061B74A /* Date+Extension.swift */; };
 		FB460C3825C87DDF0061B74A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C3725C87DDF0061B74A /* SceneDelegate.swift */; };
+		FB460C4025C888810061B74A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C3F25C888810061B74A /* PostDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		FB460C2725C86D010061B74A /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		FB460C2F25C870AA0061B74A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		FB460C3725C87DDF0061B74A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = DevigetTest/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
+		FB460C3F25C888810061B74A /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				FB460BAC25C82C900061B74A /* MainViewController.swift */,
+				FB460C3F25C888810061B74A /* PostDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB460BF425C83C4D0061B74A /* NetworkConnector.swift in Sources */,
+				FB460C4025C888810061B74A /* PostDetailViewController.swift in Sources */,
 				FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */,
 				FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */,
 				FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */,
