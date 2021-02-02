@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainProtocol: AnyObject {
-    func reloadTableWith(posts: [PostCellInfo])
+    func reloadTableWith(posts: [PostCellInfo], isPrevEnabled: Bool, isNextEnabled: Bool)
 }
 
 class MainViewController: UIViewController, MainProtocol {
@@ -22,6 +22,8 @@ class MainViewController: UIViewController, MainProtocol {
     @IBOutlet weak var rightPanelWidth: NSLayoutConstraint!
     
     private var posts: [PostCellInfo] = []
+    private var isPrevEnabled: Bool = false
+    private var isNextEnabled: Bool = false
     
     private let presenter: MainPresenter = MainPresenter()
     
@@ -29,6 +31,7 @@ class MainViewController: UIViewController, MainProtocol {
         super.viewDidLoad()
         
         table.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        table.register(UINib(nibName: "PaginationCell", bundle: nil), forCellReuseIdentifier: "PaginationCell")
         table.dataSource = self
         table.delegate = self
         table.separatorInset = .zero
@@ -53,8 +56,10 @@ class MainViewController: UIViewController, MainProtocol {
         responsiveHelper(size)
     }
     
-    func reloadTableWith(posts: [PostCellInfo]) {
+    func reloadTableWith(posts: [PostCellInfo], isPrevEnabled: Bool, isNextEnabled: Bool) {
         self.posts = posts
+        self.isPrevEnabled = isPrevEnabled
+        self.isNextEnabled = isNextEnabled
         table.reloadData()
     }
 
@@ -74,18 +79,39 @@ class MainViewController: UIViewController, MainProtocol {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return (isPrevEnabled || isNextEnabled) ? (posts.count + 1) : (posts.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let myCell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell
-            else { return UITableViewCell() }
+        if indexPath.item < posts.count {
+            guard let myCell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell
+                else { return UITableViewCell() }
+            
+            let post = posts[indexPath.item]
+            
+            myCell.updateWith(postInfo: post)
+            
+            return myCell
+        } else {
+            guard let myCell = tableView.dequeueReusableCell(withIdentifier: "PaginationCell", for: indexPath) as? PaginationCell
+                else { return UITableViewCell() }
+            
+            var prevCallback: (() -> Void)?
+            var nextCallback: (() -> Void)?
+            
+            if isPrevEnabled {
+                prevCallback = { [weak self] () in self?.presenter.getPrevPage() }
+            }
+            
+            if isNextEnabled {
+                nextCallback = { [weak self] () in self?.presenter.getNextPage() }
+            }
+            myCell.update(prevCallback: prevCallback, nextCallback: nextCallback)
+            
+            return myCell
+            
+        }
         
-        let post = posts[indexPath.item]
-        
-        myCell.updateWith(postInfo: post)
-        
-        return myCell
     }
 }
 

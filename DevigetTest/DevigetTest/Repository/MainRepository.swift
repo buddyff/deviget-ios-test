@@ -9,11 +9,11 @@ import Foundation
 
 final class MainRepository {
     
-    let connector: NetworkConnector = NetworkConnector<TopPostsConfigurations, PostList>()
+    private let connector: NetworkConnector = NetworkConnector<TopPostsConfigurations, PostList>()    
     
     func getTopPosts(callback: @escaping (Result<PostList>) -> Void) {
         
-        connector.request(TopPostsConfigurations.getTopPosts(limit: 10)) { (result) in
+        connector.request(TopPostsConfigurations.getTopPosts(limit: Constants.postsLimitPerPage)) { (result) in
             switch result {
             case .success(let response):
                 callback(Result.success(response))
@@ -22,7 +22,18 @@ final class MainRepository {
                 callback(Result.failure(error))
             }
         }
-        
+    }
+    
+    func getNextTopPosts(after: String, callback: @escaping (Result<PostList>) -> Void) {
+        connector.request(TopPostsConfigurations.getNextTopPosts(limit: Constants.postsLimitPerPage, after: after)) { (result) in
+            switch result {
+            case .success(let response):
+                callback(Result.success(response))
+            case .failure(let error):
+                print("ERROR GETTING TOP POSTS: \(error)")
+                callback(Result.failure(error))
+            }
+        }
     }
     
 }

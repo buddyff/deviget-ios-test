@@ -13,6 +13,9 @@ final class MainPresenter {
     
     private let repository: MainRepository = MainRepository()
     private var posts: [PostCellInfo] = []
+    private var currentPage: Int = 0
+    private var currentNext: String?
+    private var lastPage: Int?
     
     func getTopPosts() {
         repository.getTopPosts() { [weak self] (result) in
@@ -34,7 +37,12 @@ final class MainPresenter {
                             time: "\(hoursDiff) \(hoursDiff > 1 ? "hours" : "hour") ago"
                         )
                     }
-                    self?.delegate?.reloadTableWith(posts: self?.posts ?? [])
+                    
+                    self?.currentNext = response.data.after
+                    
+                    let isNextEnabled = response.data.after != nil
+                    
+                    self?.delegate?.reloadTableWith(posts: self?.posts ?? [], isPrevEnabled: false, isNextEnabled: isNextEnabled)
                 }                
             case .failure(let error):
                 print(error)
@@ -47,9 +55,85 @@ final class MainPresenter {
         if let readPostIndex = posts.firstIndex(where: { $0.id == id }) {
             posts[readPostIndex].read = true            
             DispatchQueue.main.async { [weak self] () in
-                self?.delegate?.reloadTableWith(posts: self?.posts ?? [])
+                guard let self = self else { return }
+                let postsToRender = self.getCurrentPagePosts()
+                let isPrevEnabled = self.currentPage != 0
+                let isNextEnabled = (self.lastPage != nil && self.currentPage != self.lastPage) || self.currentNext != nil
+                self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: isNextEnabled)
             }
         }
-        
     }
+    
+    func getNextPage() {
+        // Check if page info was already fetched
+        if (posts.count) > (Constants.postsLimitPerPage * (currentPage + 1)) {
+            currentPage += 1
+            let postsToRender = getCurrentPagePosts()
+            delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: true, isNextEnabled: currentPage != lastPage)
+        } else {
+            guard let currentNext = currentNext else { return }
+            
+            repository.getNextTopPosts(after: currentNext) { [weak self] (result) in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let response):
+                    DispatchQueue.main.async { [weak self] () in
+                        guard let self = self else { return }
+                        
+                        let incomingPosts = response.data.children
+                        
+                        if !incomingPosts.isEmpty {
+                            self.currentPage += 1
+                            
+                            self.posts += response.data.children.map { (post) -> PostCellInfo in
+                                let createdDate = post.data.created.toDate()
+                                let hoursDiff = Date().hoursDiff(date: createdDate)
+                                let isRead = UserDefaults.standard.bool(forKey: post.data.id)
+                                
+                                return PostCellInfo(
+                                    id: post.data.id,
+                                    read: isRead,
+                                    title: post.data.title,
+                                    thumbnail: post.data.thumbnail,
+                                    author: post.data.author,
+                                    comments: "\(post.data.comments) comments",
+                                    time: "\(hoursDiff) \(hoursDiff > 1 ? "hours" : "hour") ago"
+                                )
+                            }
+                        }
+                        
+                        self.currentNext = response.data.after
+                        
+                        if (self.currentNext == nil || incomingPosts.isEmpty) {
+                            self.lastPage = self.currentPage
+                        }
+                        
+                        let postsToRender = self.getCurrentPagePosts()
+                        let isPrevEnabled = (self.lastPage != nil && self.lastPage != self.currentPage)
+                        
+                        self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: (self.currentNext != nil) )
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+
+    }
+    
+    func getPrevPage() {
+        currentPage -= 1
+        let postsToRender = getCurrentPagePosts()
+        delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: currentPage != 0, isNextEnabled: true)
+    }
+    
+    private func getCurrentPagePosts() -> [PostCellInfo] {
+        let startIndex = Constants.postsLimitPerPage * self.currentPage
+        let endIndex = min((startIndex + (Constants.postsLimitPerPage - 1)), (self.posts.count - 1))
+        return Array(self.posts[startIndex...endIndex])
+    }
+    
+    
 }

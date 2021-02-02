@@ -9,7 +9,6 @@ import Foundation
 
 enum TopPostsConfigurations {
     case getTopPosts(limit: Int)
-    case getPrevTopPosts(limit: Int, before: String)
     case getNextTopPosts(limit: Int, after: String)
 }
 
@@ -32,8 +31,6 @@ extension TopPostsConfigurations: NetworkConfiguration {
             return ["limit": limit]
         case .getNextTopPosts(let limit, let after):
             return ["limit": limit, "after": after]
-        case .getPrevTopPosts(let limit, let before):
-            return ["limit": limit, "before": before]
         }
     }
     

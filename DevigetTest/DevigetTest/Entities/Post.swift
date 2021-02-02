@@ -13,6 +13,8 @@ struct PostList: Decodable {
 
 struct PostListData: Decodable {
     var children: [Post]
+    var after: String?
+    var before: String?
 }
 
 struct Post: Decodable {

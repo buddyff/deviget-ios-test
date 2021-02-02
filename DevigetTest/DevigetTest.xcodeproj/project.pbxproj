@@ -29,6 +29,9 @@
 		FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C2F25C870AA0061B74A /* Date+Extension.swift */; };
 		FB460C3825C87DDF0061B74A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C3725C87DDF0061B74A /* SceneDelegate.swift */; };
 		FB460C4025C888810061B74A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB460C3F25C888810061B74A /* PostDetailViewController.swift */; };
+		FB4CD42B25C8CF610042C6F5 /* PaginationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB4CD42A25C8CF610042C6F5 /* PaginationCell.xib */; };
+		FB4CD43025C9059C0042C6F5 /* PaginationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD42F25C9059C0042C6F5 /* PaginationCell.swift */; };
+		FB8A656C25C9B96D0089414D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A656B25C9B96D0089414D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		FB460C2F25C870AA0061B74A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		FB460C3725C87DDF0061B74A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = DevigetTest/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
 		FB460C3F25C888810061B74A /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		FB4CD42A25C8CF610042C6F5 /* PaginationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaginationCell.xib; sourceTree = "<group>"; };
+		FB4CD42F25C9059C0042C6F5 /* PaginationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationCell.swift; sourceTree = "<group>"; };
+		FB8A656B25C9B96D0089414D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 		FB460BDB25C82E1D0061B74A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				FB4CD42925C8CF380042C6F5 /* PaginationCell */,
 				FB460BE725C835560061B74A /* PostCell */,
 				FB460BAE25C82C900061B74A /* Main.storyboard */,
 			);
@@ -212,6 +219,7 @@
 			children = (
 				FB460C2125C86B700061B74A /* Extensions */,
 				FB460BFE25C83E0C0061B74A /* Logger */,
+				FB8A656B25C9B96D0089414D /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -256,6 +264,15 @@
 				FB460C2F25C870AA0061B74A /* Date+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FB4CD42925C8CF380042C6F5 /* PaginationCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB4CD42A25C8CF610042C6F5 /* PaginationCell.xib */,
+				FB4CD42F25C9059C0042C6F5 /* PaginationCell.swift */,
+			);
+			path = PaginationCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB4CD42B25C8CF610042C6F5 /* PaginationCell.xib in Resources */,
 				FB460BB525C82C910061B74A /* LaunchScreen.storyboard in Resources */,
 				FB460BB225C82C910061B74A /* Assets.xcassets in Resources */,
 				FB460BB025C82C900061B74A /* Main.storyboard in Resources */,
@@ -400,11 +418,13 @@
 				FB460C0825C8437D0061B74A /* MainPresenter.swift in Sources */,
 				FB460C1A25C84B350061B74A /* TopPostsConfiguration.swift in Sources */,
 				FB460BEF25C83BE80061B74A /* NetworkConfigurator.swift in Sources */,
+				FB4CD43025C9059C0042C6F5 /* PaginationCell.swift in Sources */,
 				FB460BE925C8356C0061B74A /* PostCell.swift in Sources */,
 				FB460C0025C83E140061B74A /* Log.swift in Sources */,
 				FB460BF925C83C950061B74A /* NetworkSettings.swift in Sources */,
 				FB460C2825C86D010061B74A /* Float+Extension.swift in Sources */,
 				FB460C0E25C847070061B74A /* Post.swift in Sources */,
+				FB8A656C25C9B96D0089414D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
