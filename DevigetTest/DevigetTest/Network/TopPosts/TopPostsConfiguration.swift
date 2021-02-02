@@ -28,9 +28,9 @@ extension TopPostsConfigurations: NetworkConfiguration {
     var parameters: Parameters? {
         switch self {
         case .getTopPosts(let limit):
-            return ["limit": limit]
+            return ["limit": limit, "t": "all"]
         case .getNextTopPosts(let limit, let after):
-            return ["limit": limit, "after": after]
+            return ["limit": limit, "after": after, "t": "all"]
         }
     }
     
