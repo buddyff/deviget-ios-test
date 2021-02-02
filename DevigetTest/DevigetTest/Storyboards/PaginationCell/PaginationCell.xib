@@ -21,7 +21,7 @@
                             <constraint firstAttribute="width" constant="48" id="5lM-OW-3Ac"/>
                             <constraint firstAttribute="height" constant="48" id="F1S-jj-kaM"/>
                         </constraints>
-                        <state key="normal" title="Button" image="back"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYA-Vu-b5x">
                         <rect key="frame" x="411" y="16" width="48" height="48"/>
@@ -29,7 +29,7 @@
                             <constraint firstAttribute="height" constant="48" id="6us-Gi-1ng"/>
                             <constraint firstAttribute="width" constant="48" id="ZVJ-iT-tyl"/>
                         </constraints>
-                        <state key="normal" image="arrow"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -39,6 +39,7 @@
                     <constraint firstItem="LYA-Vu-b5x" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="gSW-w4-Zbj"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="nextBtn" destination="LYA-Vu-b5x" id="ESU-0f-djk"/>
                 <outlet property="previousBtn" destination="u2m-2q-gLV" id="O4m-1Q-jFG"/>
@@ -46,8 +47,4 @@
             <point key="canvasLocation" x="145.6521739130435" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="arrow" width="256" height="256"/>
-        <image name="back" width="256" height="256"/>
-    </resources>
 </document>

@@ -16,6 +16,8 @@ final class PaginationCell: UITableViewCell {
     private var nextCallback: (() -> Void)?
     
     func update(prevCallback: (() -> Void)?, nextCallback: (() -> Void)?) {
+        previousBtn.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        nextBtn.setImage(UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
         if let prevCallback = prevCallback {
             self.prevCallback = prevCallback
             previousBtn.addTarget(self, action: #selector(prevTapped), for: .touchUpInside)
