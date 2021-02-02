@@ -41,8 +41,9 @@ final class MainPresenter {
                     self?.currentNext = response.data.after
                     
                     let isNextEnabled = response.data.after != nil
+                    let filteredPosts = self?.posts.filter { !UserDefaults.standard.bool(forKey: "d\($0.id)") }
                     
-                    self?.delegate?.reloadTableWith(posts: self?.posts ?? [], isPrevEnabled: false, isNextEnabled: isNextEnabled)
+                    self?.delegate?.reloadTableWith(posts: filteredPosts ?? [], isPrevEnabled: false, isNextEnabled: isNextEnabled)
                 }                
             case .failure(let error):
                 print(error)
@@ -82,9 +83,11 @@ final class MainPresenter {
                         guard let self = self else { return }
                         
                         let incomingPosts = response.data.children
+                        var isPrevEnabled = false
                         
                         if !incomingPosts.isEmpty {
                             self.currentPage += 1
+                            isPrevEnabled = true
                             
                             self.posts += response.data.children.map { (post) -> PostCellInfo in
                                 let createdDate = post.data.created.toDate()
@@ -110,7 +113,6 @@ final class MainPresenter {
                         }
                         
                         let postsToRender = self.getCurrentPagePosts()
-                        let isPrevEnabled = (self.lastPage != nil && self.lastPage != self.currentPage)
                         
                         self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: (self.currentNext != nil) )
                     }
@@ -132,7 +134,12 @@ final class MainPresenter {
     private func getCurrentPagePosts() -> [PostCellInfo] {
         let startIndex = Constants.postsLimitPerPage * self.currentPage
         let endIndex = min((startIndex + (Constants.postsLimitPerPage - 1)), (self.posts.count - 1))
-        return Array(self.posts[startIndex...endIndex])
+        let unfilteredPosts = Array(self.posts[startIndex...endIndex])
+        return unfilteredPosts.filter{ !UserDefaults.standard.bool(forKey: "d\($0.id)") }
+    }
+    
+    func dismissPostWith(id: String) {
+        UserDefaults.standard.setValue(true, forKey: "d\(id)")
     }
     
     

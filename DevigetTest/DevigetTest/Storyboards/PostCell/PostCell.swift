@@ -19,7 +19,9 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
     
-    func updateWith(postInfo: PostCellInfo) {
+    private var callback: (() -> Void)?
+    
+    func updateWith(postInfo: PostCellInfo, callback: @escaping () -> Void) {
         unreadStatus.isHidden = postInfo.read
         authorLabel.text = postInfo.author
         titleLabel.text = postInfo.title
@@ -27,10 +29,17 @@ class PostCell: UITableViewCell {
         timeLabel.text = postInfo.time
         arrowImage.image = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
         arrowImage.tintColor = .white
+        self.callback = callback
+        
+        dismissBtn.addTarget(self, action: #selector(dismissAction), for: .touchUpInside)
         
         if let url = URL(string: postInfo.thumbnail ?? "") {
             self.picture.load(url: url)
         }
+    }
+    
+    @objc private func dismissAction(sender: Any?) {
+        callback?()
     }
 }
 

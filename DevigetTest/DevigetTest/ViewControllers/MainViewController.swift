@@ -88,8 +88,15 @@ extension MainViewController: UITableViewDataSource {
                 else { return UITableViewCell() }
             
             let post = posts[indexPath.item]
-            
-            myCell.updateWith(postInfo: post)
+            let dismissCallback = { [weak self] () -> Void in
+                if let index = self?.posts.firstIndex(where: { $0.id == post.id }) {
+                    self?.posts.remove(at: index)
+                    tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                    self?.presenter.dismissPostWith(id: post.id)
+                }
+                
+            }
+            myCell.updateWith(postInfo: post, callback: dismissCallback)
             
             return myCell
         } else {
