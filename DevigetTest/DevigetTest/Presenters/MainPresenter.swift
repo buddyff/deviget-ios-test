@@ -26,16 +26,7 @@ final class MainPresenter {
                         let createdDate = post.data.created.toDate()
                         let hoursDiff = Date().hoursDiff(date: createdDate)
                         let isRead = UserDefaults.standard.bool(forKey: post.data.id)
-                        
-                        return PostCellInfo(
-                            id: post.data.id,
-                            read: isRead,
-                            title: post.data.title,
-                            thumbnail: post.data.thumbnail,
-                            author: post.data.author,
-                            comments: "\(post.data.comments) comments",
-                            time: "\(hoursDiff) \(hoursDiff > 1 ? "hours" : "hour") ago"
-                        )
+                        return PostCellInfo(from: post, read: isRead, hoursDiff: hoursDiff)
                     }
                     
                     self?.currentNext = response.data.after
@@ -93,16 +84,7 @@ final class MainPresenter {
                                 let createdDate = post.data.created.toDate()
                                 let hoursDiff = Date().hoursDiff(date: createdDate)
                                 let isRead = UserDefaults.standard.bool(forKey: post.data.id)
-                                
-                                return PostCellInfo(
-                                    id: post.data.id,
-                                    read: isRead,
-                                    title: post.data.title,
-                                    thumbnail: post.data.thumbnail,
-                                    author: post.data.author,
-                                    comments: "\(post.data.comments) comments",
-                                    time: "\(hoursDiff) \(hoursDiff > 1 ? "hours" : "hour") ago"
-                                )
+                                return PostCellInfo(from: post, read: isRead, hoursDiff: hoursDiff)
                             }
                         }
                         

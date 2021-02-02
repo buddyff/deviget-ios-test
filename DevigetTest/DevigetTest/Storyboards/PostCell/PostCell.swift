@@ -51,4 +51,14 @@ struct PostCellInfo {
     var author: String
     var comments: String
     var time: String
+    
+    init(from: Post, read: Bool, hoursDiff: Int) {
+        self.id = from.data.id
+        self.read = read
+        self.title = from.data.title
+        self.thumbnail = from.data.thumbnail
+        self.author = from.data.author
+        self.comments = "\(from.data.comments) \(from.data.comments > 1 ? "comments" : "comment")"
+        self.time = "\(hoursDiff) \(hoursDiff > 1 ? "hours" : "hour") ago"
+    }
 }
