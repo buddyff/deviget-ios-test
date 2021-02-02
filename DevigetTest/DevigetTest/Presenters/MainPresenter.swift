@@ -142,5 +142,11 @@ final class MainPresenter {
         UserDefaults.standard.setValue(true, forKey: "d\(id)")
     }
     
+    func dismissPosts(posts: [String]) {
+        for id in posts {
+            UserDefaults.standard.setValue(true, forKey: "d\(id)")
+        }
+    }
+    
     
 }

@@ -32,6 +32,7 @@ class MainViewController: UIViewController, MainProtocol {
         
         table.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
         table.register(UINib(nibName: "PaginationCell", bundle: nil), forCellReuseIdentifier: "PaginationCell")
+        table.register(UINib(nibName: "DismissAllCell", bundle: nil), forCellReuseIdentifier: "DismissAllCell")
         table.dataSource = self
         table.delegate = self
         table.separatorInset = .zero
@@ -79,7 +80,7 @@ class MainViewController: UIViewController, MainProtocol {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (isPrevEnabled || isNextEnabled) ? (posts.count + 1) : (posts.count)
+        return (isPrevEnabled || isNextEnabled) ? (posts.count + 2) : (posts.count + 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,25 +101,46 @@ extension MainViewController: UITableViewDataSource {
             
             return myCell
         } else {
-            guard let myCell = tableView.dequeueReusableCell(withIdentifier: "PaginationCell", for: indexPath) as? PaginationCell
-                else { return UITableViewCell() }
+            if indexPath.item == posts.count + 1 {
+                // Pagination cell
+                guard let myCell = tableView.dequeueReusableCell(withIdentifier: "PaginationCell", for: indexPath) as? PaginationCell
+                    else { return UITableViewCell() }
+                
+                var prevCallback: (() -> Void)?
+                var nextCallback: (() -> Void)?
+                
+                if isPrevEnabled {
+                    prevCallback = { [weak self] () in self?.presenter.getPrevPage() }
+                }
+                
+                if isNextEnabled {
+                    nextCallback = { [weak self] () in self?.presenter.getNextPage() }
+                }
+                myCell.update(prevCallback: prevCallback, nextCallback: nextCallback)
+                return myCell
+                
+            } else {
+                // Dismiss all cell
+                guard let myCell = tableView.dequeueReusableCell(withIdentifier: "DismissAllCell", for: indexPath) as? DismissAllCell
+                    else { return UITableViewCell() }
+                
+                let callback = { [weak self] () -> Void in
+                    guard let self = self else { return }
+                    let postsIds = self.posts.map({ $0.id })
+                    var indexPaths: [IndexPath] = []
+                    self.presenter.dismissPosts(posts: postsIds)
+                    for i in (0...self.posts.count-1) {
+                        self.posts.remove(at: 0)
+                        indexPaths.append(IndexPath(row: i, section: 0))
+                    }
+                    tableView.deleteRows(at: indexPaths, with: .fade)
+                }
+                
+                myCell.update(callback: callback)
+                return myCell
             
-            var prevCallback: (() -> Void)?
-            var nextCallback: (() -> Void)?
-            
-            if isPrevEnabled {
-                prevCallback = { [weak self] () in self?.presenter.getPrevPage() }
             }
-            
-            if isNextEnabled {
-                nextCallback = { [weak self] () in self?.presenter.getNextPage() }
-            }
-            myCell.update(prevCallback: prevCallback, nextCallback: nextCallback)
-            
-            return myCell
-            
         }
-        
     }
 }
 

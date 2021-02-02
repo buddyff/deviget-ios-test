@@ -32,6 +32,8 @@
 		FB4CD42B25C8CF610042C6F5 /* PaginationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB4CD42A25C8CF610042C6F5 /* PaginationCell.xib */; };
 		FB4CD43025C9059C0042C6F5 /* PaginationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4CD42F25C9059C0042C6F5 /* PaginationCell.swift */; };
 		FB8A656C25C9B96D0089414D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A656B25C9B96D0089414D /* Constants.swift */; };
+		FB8A657225C9E6130089414D /* DismissAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8A657125C9E6130089414D /* DismissAllCell.xib */; };
+		FB8A657725C9E8020089414D /* DismissAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A657625C9E8020089414D /* DismissAllCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		FB4CD42A25C8CF610042C6F5 /* PaginationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaginationCell.xib; sourceTree = "<group>"; };
 		FB4CD42F25C9059C0042C6F5 /* PaginationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationCell.swift; sourceTree = "<group>"; };
 		FB8A656B25C9B96D0089414D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FB8A657125C9E6130089414D /* DismissAllCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DismissAllCell.xib; sourceTree = "<group>"; };
+		FB8A657625C9E8020089414D /* DismissAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAllCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 		FB460BDB25C82E1D0061B74A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				FB8A657025C9E5E30089414D /* DismissAllCell */,
 				FB4CD42925C8CF380042C6F5 /* PaginationCell */,
 				FB460BE725C835560061B74A /* PostCell */,
 				FB460BAE25C82C900061B74A /* Main.storyboard */,
@@ -275,6 +280,15 @@
 			path = PaginationCell;
 			sourceTree = "<group>";
 		};
+		FB8A657025C9E5E30089414D /* DismissAllCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB8A657125C9E6130089414D /* DismissAllCell.xib */,
+				FB8A657625C9E8020089414D /* DismissAllCell.swift */,
+			);
+			path = DismissAllCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -378,6 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB8A657225C9E6130089414D /* DismissAllCell.xib in Resources */,
 				FB4CD42B25C8CF610042C6F5 /* PaginationCell.xib in Resources */,
 				FB460BB525C82C910061B74A /* LaunchScreen.storyboard in Resources */,
 				FB460BB225C82C910061B74A /* Assets.xcassets in Resources */,
@@ -422,6 +437,7 @@
 				FB460BE925C8356C0061B74A /* PostCell.swift in Sources */,
 				FB460C0025C83E140061B74A /* Log.swift in Sources */,
 				FB460BF925C83C950061B74A /* NetworkSettings.swift in Sources */,
+				FB8A657725C9E8020089414D /* DismissAllCell.swift in Sources */,
 				FB460C2825C86D010061B74A /* Float+Extension.swift in Sources */,
 				FB460C0E25C847070061B74A /* Post.swift in Sources */,
 				FB8A656C25C9B96D0089414D /* Constants.swift in Sources */,
