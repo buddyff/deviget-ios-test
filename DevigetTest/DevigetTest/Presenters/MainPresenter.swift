@@ -5,7 +5,7 @@
 //  Created by Rodrigo Camparo on 01/02/2021.
 //
 
-import Foundation
+import UIKit
 
 final class MainPresenter {
     
@@ -137,6 +137,18 @@ final class MainPresenter {
         if let post = posts.first(where: { $0.id == forPostId}),
            let url = URL(string: post.thumbnail ?? "") {
             delegate?.openImageWith(url: url)
+        }
+    }
+    
+    func save(image: UIImage) {
+        if let pngRepresentation = image.pngData() {
+            if let filePath = FileHelper.filePath(forKey: "redditThumbnail") {
+                do {
+                    try pngRepresentation.write(to: filePath, options: .atomic)
+                } catch let err {
+                    print("Saving file resulted in error: ", err)
+                }
+            }
         }
     }
 }

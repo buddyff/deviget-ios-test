@@ -47,6 +47,7 @@ class MainViewController: UIViewController, MainProtocol {
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         rightPanelPicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+        rightPanelPicture.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(imageLongTap)))
         rightPanelPicture.isUserInteractionEnabled = true
         
         responsiveHelper(UIScreen.main.bounds.size)
@@ -95,6 +96,18 @@ class MainViewController: UIViewController, MainProtocol {
     @objc private func imageTapped(sender: Any?) {
         guard let selectedPostID = selectedPostID else { return }
         presenter.openImage(forPostId: selectedPostID)
+    }
+    
+    @objc private func imageLongTap(sender: Any?) {
+        let alert = UIAlertController(title: "Do you want to save this photo ?", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) { [weak self] _ in
+            guard let gesture = sender as? UILongPressGestureRecognizer,
+                  let imageView = gesture.view as? UIImageView,
+                  let image = imageView.image else { return }
+            self?.presenter.save(image: image)
+        })
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func openImageWith(url: URL) {

@@ -41,6 +41,7 @@
 		FBB0035E25CAF6B700AA6F25 /* MainMockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0035D25CAF6B700AA6F25 /* MainMockedData.swift */; };
 		FBB0036425CAFBE300AA6F25 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0036325CAFBE300AA6F25 /* UserDefaultsManager.swift */; };
 		FBB0036925CAFCE000AA6F25 /* UserDefaultsManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0036825CAFCE000AA6F25 /* UserDefaultsManagerMock.swift */; };
+		FBB0036E25CB1BCC00AA6F25 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0036D25CB1BCC00AA6F25 /* FileHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		FBB0035D25CAF6B700AA6F25 /* MainMockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMockedData.swift; sourceTree = "<group>"; };
 		FBB0036325CAFBE300AA6F25 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FBB0036825CAFCE000AA6F25 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
+		FBB0036D25CB1BCC00AA6F25 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				FB460BFE25C83E0C0061B74A /* Logger */,
 				FB8A656B25C9B96D0089414D /* Constants.swift */,
 				FBB0036325CAFBE300AA6F25 /* UserDefaultsManager.swift */,
+				FBB0036D25CB1BCC00AA6F25 /* FileHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				FB460BF425C83C4D0061B74A /* NetworkConnector.swift in Sources */,
 				FB460C4025C888810061B74A /* PostDetailViewController.swift in Sources */,
 				FB460BAD25C82C900061B74A /* MainViewController.swift in Sources */,
+				FBB0036E25CB1BCC00AA6F25 /* FileHelper.swift in Sources */,
 				FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */,
 				FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */,
 				FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */,
