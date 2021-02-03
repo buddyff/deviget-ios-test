@@ -140,9 +140,9 @@ final class MainPresenter {
         }
     }
     
-    func save(image: UIImage) {
+    func save(image: UIImage, postID: String) {
         if let pngRepresentation = image.pngData() {
-            if let filePath = FileHelper.filePath(forKey: "redditThumbnail") {
+            if let filePath = FileHelper.filePath(forKey: postID) {
                 do {
                     try pngRepresentation.write(to: filePath, options: .atomic)
                 } catch let err {

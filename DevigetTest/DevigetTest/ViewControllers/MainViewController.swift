@@ -99,12 +99,13 @@ class MainViewController: UIViewController, MainProtocol {
     }
     
     @objc private func imageLongTap(sender: Any?) {
+        guard let selectedPostID = selectedPostID else { return }
         let alert = UIAlertController(title: "Do you want to save this photo ?", message: "", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) { [weak self] _ in
             guard let gesture = sender as? UILongPressGestureRecognizer,
                   let imageView = gesture.view as? UIImageView,
                   let image = imageView.image else { return }
-            self?.presenter.save(image: image)
+            self?.presenter.save(image: image, postID: selectedPostID)
         })
         alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
         present(alert, animated: true, completion: nil)
