@@ -1,5 +1,9 @@
 # deviget-ios-test
 
+# Requirements:
+- iOS 14.2
+- Xcode 12.2
+
 # Known issues / improvements
 - Make right panel (shown in landscape orientation) scrollable
 - Show current page number
