@@ -21,11 +21,13 @@ class MainViewController: UIViewController, MainProtocol {
     @IBOutlet weak var rightPanelContent: UILabel!
     @IBOutlet weak var rightPanelWidth: NSLayoutConstraint!
     
+    private var refreshControl = UIRefreshControl()
     private var posts: [PostCellInfo] = []
     private var isPrevEnabled: Bool = false
     private var isNextEnabled: Bool = false
     
     private let presenter: MainPresenter = MainPresenter(MainRepository(), UserDefaultsManager())
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,9 @@ class MainViewController: UIViewController, MainProtocol {
         
         presenter.delegate = self
         presenter.getTopPosts()
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        table.addSubview(refreshControl)
         
         responsiveHelper(UIScreen.main.bounds.size)
     }
@@ -62,6 +67,7 @@ class MainViewController: UIViewController, MainProtocol {
             self?.posts = posts
             self?.isPrevEnabled = isPrevEnabled
             self?.isNextEnabled = isNextEnabled
+            self?.refreshControl.endRefreshing()
             self?.table.reloadData()
         }
     }
@@ -76,6 +82,10 @@ class MainViewController: UIViewController, MainProtocol {
             rightPanelWidth.constant = 0
             rightPanel.isHidden = true
         }
+    }
+    
+    @objc private func refresh(sender: Any?) {
+        presenter.refreshTable()
     }
 }
 
@@ -158,6 +168,8 @@ extension MainViewController: UITableViewDelegate {
             rightPanelContent.text = post.title
             if let url = URL(string: post.thumbnail ?? "") {
                 rightPanelPicture.load(url: url)
+            } else {
+                rightPanelPicture.image = nil
             }
         } else {
             self.performSegue(withIdentifier: "PostDetail", sender: self)

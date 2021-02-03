@@ -111,6 +111,7 @@ class MainPresenterTests: XCTestCase {
         
         //Then
         XCTAssert(mockedUserDefaults.didCallDismissPost.timesCalled == 1, "Unexpected number of times called 'dismissPost'")
+        XCTAssert(mockedUserDefaults.totalNumberOfCalls() == 1, "Unexpected number of times called 'userDefaultsManager'")
     }
     
     func testDismissPosts() {
@@ -126,6 +127,7 @@ class MainPresenterTests: XCTestCase {
         
         //Then
         XCTAssert(mockedUserDefaults.didCallDismissPost.timesCalled == 4, "Unexpected number of times called 'dismissPost'")
+        XCTAssert(mockedUserDefaults.totalNumberOfCalls() == 4, "Unexpected number of times called 'userDefaultsManager'")
     }
     
     func testReadPost() {
@@ -148,5 +150,21 @@ class MainPresenterTests: XCTestCase {
         XCTAssert(mockedVC.posts[0].read == true, "Post should be read")
         XCTAssert(mockedVC.totalNumberOfCalls() == 2, "Unexpected number of functions called in VC")
         XCTAssert(mockedRepository.totalNumberOfCalls() == 1, "Invalid number of calls to repository")
+    }
+    
+    func testRefreshTable() {
+        //Given
+        let mockedVC = MainViewControllerMock()
+        let mockedRepository = MainRepositoryMock()
+        let mockedUserDefaults = UserDefaultsManagerMock()
+        let presenter = MainPresenter(mockedRepository, mockedUserDefaults)
+        presenter.delegate = mockedVC
+        
+        //When
+        presenter.getTopPosts()
+        presenter.refreshTable()
+        
+        //Then
+        XCTAssert(mockedVC.didCallReloadTable.timesCalled == 2, "Unexpected number of times called 'reloadTable'")
     }
 }

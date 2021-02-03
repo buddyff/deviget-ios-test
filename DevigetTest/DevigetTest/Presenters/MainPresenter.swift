@@ -112,9 +112,9 @@ final class MainPresenter {
     }
     
     private func getCurrentPagePosts() -> [PostCellInfo] {
-        let startIndex = Constants.postsLimitPerPage * self.currentPage
-        let endIndex = min((startIndex + (Constants.postsLimitPerPage - 1)), (self.posts.count - 1))
-        let unfilteredPosts = Array(self.posts[startIndex...endIndex])
+        let startIndex = Constants.postsLimitPerPage * currentPage
+        let endIndex = min((startIndex + (Constants.postsLimitPerPage - 1)), (posts.count - 1))
+        let unfilteredPosts = Array(posts[startIndex...endIndex])
         return unfilteredPosts.filter{ !UserDefaults.standard.bool(forKey: "d\($0.id)") }
     }
     
@@ -128,5 +128,8 @@ final class MainPresenter {
         }
     }
     
-    
+    func refreshTable() {
+        currentPage = 0
+        getTopPosts()
+    }    
 }
