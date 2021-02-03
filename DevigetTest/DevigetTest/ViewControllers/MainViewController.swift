@@ -188,6 +188,5 @@ extension MainViewController: UITableViewDelegate {
         } else {
             self.performSegue(withIdentifier: "PostDetail", sender: self)
         }
-        
     }
 }

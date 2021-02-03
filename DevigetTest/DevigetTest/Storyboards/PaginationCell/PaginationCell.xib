@@ -8,29 +8,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaginationCell" rowHeight="80" id="SVs-O7-tn2" customClass="PaginationCell" customModule="DevigetTest" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="491" height="80"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaginationCell" rowHeight="96" id="SVs-O7-tn2" customClass="PaginationCell" customModule="DevigetTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="491" height="96"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SVs-O7-tn2" id="W3G-qw-qx6">
-                <rect key="frame" x="0.0" y="0.0" width="491" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="491" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2m-2q-gLV">
-                        <rect key="frame" x="32" y="16" width="48" height="48"/>
+                        <rect key="frame" x="32" y="12" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="5lM-OW-3Ac"/>
                             <constraint firstAttribute="height" constant="48" id="F1S-jj-kaM"/>
                         </constraints>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-2a-FHB">
-                        <rect key="frame" x="245.5" y="40" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYA-Vu-b5x">
-                        <rect key="frame" x="411" y="16" width="48" height="48"/>
+                        <rect key="frame" x="411" y="12" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="6us-Gi-1ng"/>
                             <constraint firstAttribute="width" constant="48" id="ZVJ-iT-tyl"/>
@@ -40,20 +34,19 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="LYA-Vu-b5x" secondAttribute="trailing" constant="32" id="12t-UF-QOK"/>
-                    <constraint firstItem="daZ-2a-FHB" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="99t-bd-s7Z"/>
+                    <constraint firstItem="u2m-2q-gLV" firstAttribute="top" secondItem="W3G-qw-qx6" secondAttribute="top" constant="12" id="9Bw-RS-gff"/>
+                    <constraint firstAttribute="bottom" secondItem="u2m-2q-gLV" secondAttribute="bottom" constant="12" id="AQQ-fW-24T"/>
+                    <constraint firstAttribute="bottom" secondItem="LYA-Vu-b5x" secondAttribute="bottom" constant="12" id="BfR-Ue-fdu"/>
                     <constraint firstItem="u2m-2q-gLV" firstAttribute="leading" secondItem="W3G-qw-qx6" secondAttribute="leading" constant="32" id="QJP-81-szw"/>
-                    <constraint firstItem="u2m-2q-gLV" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="eBl-jr-Tvc"/>
-                    <constraint firstItem="LYA-Vu-b5x" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="gSW-w4-Zbj"/>
-                    <constraint firstItem="daZ-2a-FHB" firstAttribute="centerX" secondItem="W3G-qw-qx6" secondAttribute="centerX" id="lKt-go-bsW"/>
+                    <constraint firstItem="LYA-Vu-b5x" firstAttribute="top" secondItem="W3G-qw-qx6" secondAttribute="top" constant="12" id="qYv-lI-aSj"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="nextBtn" destination="LYA-Vu-b5x" id="ESU-0f-djk"/>
-                <outlet property="pageNumberLabel" destination="daZ-2a-FHB" id="MA8-Bz-lXT"/>
                 <outlet property="previousBtn" destination="u2m-2q-gLV" id="O4m-1Q-jFG"/>
             </connections>
-            <point key="canvasLocation" x="145.6521739130435" y="145.98214285714286"/>
+            <point key="canvasLocation" x="145.6521739130435" y="140.625"/>
         </tableViewCell>
     </objects>
 </document>

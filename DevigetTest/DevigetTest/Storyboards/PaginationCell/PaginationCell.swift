@@ -10,7 +10,6 @@ import UIKit
 final class PaginationCell: UITableViewCell {
     
     @IBOutlet weak var previousBtn: UIButton!
-    @IBOutlet weak var pageNumberLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     
     private var prevCallback: (() -> Void)?
@@ -19,6 +18,7 @@ final class PaginationCell: UITableViewCell {
     func update(prevCallback: (() -> Void)?, nextCallback: (() -> Void)?) {
         previousBtn.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         nextBtn.setImage(UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        
         if let prevCallback = prevCallback {
             self.prevCallback = prevCallback
             previousBtn.addTarget(self, action: #selector(prevTapped), for: .touchUpInside)
