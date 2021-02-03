@@ -12,13 +12,15 @@ final class MainPresenter {
     weak var delegate: MainProtocol?
     
     private let repository: MainRepositoryProtocol
+    private let userDefaultsManager: UserDefaultsProtocol
     private var posts: [PostCellInfo] = []
     private var currentPage: Int = 0
     private var currentNext: String?
     private var lastPage: Int?
     
-    required init(_ repository: MainRepositoryProtocol) {
+    required init(_ repository: MainRepositoryProtocol, _ userDefaultsManager: UserDefaultsProtocol) {
         self.repository = repository
+        self.userDefaultsManager = userDefaultsManager
     }
     
     func getTopPosts() {
@@ -45,16 +47,14 @@ final class MainPresenter {
     }
     
     func readPostWith(id: String) {
-        UserDefaults.standard.setValue(true, forKey: id)
+        userDefaultsManager.readPostWith(id: id)
+        
         if let readPostIndex = posts.firstIndex(where: { $0.id == id }) {
-            posts[readPostIndex].read = true            
-            DispatchQueue.main.async { [weak self] () in
-                guard let self = self else { return }
-                let postsToRender = self.getCurrentPagePosts()
-                let isPrevEnabled = self.currentPage != 0
-                let isNextEnabled = (self.lastPage != nil && self.currentPage != self.lastPage) || self.currentNext != nil
-                self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: isNextEnabled)
-            }
+            posts[readPostIndex].read = true
+            let postsToRender = self.getCurrentPagePosts()
+            let isPrevEnabled = self.currentPage != 0
+            let isNextEnabled = (self.lastPage != nil && self.currentPage != self.lastPage) || self.currentNext != nil
+            self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: isNextEnabled)
         }
     }
     
@@ -71,40 +71,36 @@ final class MainPresenter {
                 guard let self = self else { return }
                 
                 switch result {
-                case .success(let response):
-                    DispatchQueue.main.async { [weak self] () in
-                        guard let self = self else { return }
+                case .success(let response):                    
+                    let incomingPosts = response.data.children
+                    var isPrevEnabled = false
+                    
+                    if !incomingPosts.isEmpty {
+                        self.currentPage += 1
+                        isPrevEnabled = true
                         
-                        let incomingPosts = response.data.children
-                        var isPrevEnabled = false
-                        
-                        if !incomingPosts.isEmpty {
-                            self.currentPage += 1
-                            isPrevEnabled = true
-                            
-                            self.posts += response.data.children.map { (post) -> PostCellInfo in
-                                let createdDate = post.data.created.toDate()
-                                let hoursDiff = Date().hoursDiff(date: createdDate)
-                                let isRead = UserDefaults.standard.bool(forKey: post.data.id)
-                                return PostCellInfo(from: post, read: isRead, hoursDiff: hoursDiff)
-                            }
+                        self.posts += response.data.children.map { (post) -> PostCellInfo in
+                            let createdDate = post.data.created.toDate()
+                            let hoursDiff = Date().hoursDiff(date: createdDate)
+                            let isRead = UserDefaults.standard.bool(forKey: post.data.id)
+                            return PostCellInfo(from: post, read: isRead, hoursDiff: hoursDiff)
                         }
-                        
-                        self.currentNext = response.data.after
-                        
-                        if (self.currentNext == nil || incomingPosts.isEmpty) {
-                            self.lastPage = self.currentPage
-                        }
-                        
-                        let postsToRender = self.getCurrentPagePosts()
-                        
-                        self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: (self.currentNext != nil) )
                     }
+                    
+                    self.currentNext = response.data.after
+                    
+                    if (self.currentNext == nil || incomingPosts.isEmpty) {
+                        self.lastPage = self.currentPage
+                    }
+                    
+                    let postsToRender = self.getCurrentPagePosts()
+                    
+                    self.delegate?.reloadTableWith(posts: postsToRender, isPrevEnabled: isPrevEnabled, isNextEnabled: (self.currentNext != nil) )
+                    
                 case .failure(let error):
                     print(error)
                 }
             }
-            
         }
 
     }
@@ -123,12 +119,12 @@ final class MainPresenter {
     }
     
     func dismissPostWith(id: String) {
-        UserDefaults.standard.setValue(true, forKey: "d\(id)")
+        userDefaultsManager.dismissPostWith(id: id)
     }
     
     func dismissPosts(posts: [String]) {
         for id in posts {
-            UserDefaults.standard.setValue(true, forKey: "d\(id)")
+            userDefaultsManager.dismissPostWith(id: id)
         }
     }
     

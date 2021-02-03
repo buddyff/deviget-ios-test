@@ -8,5 +8,5 @@
 import Foundation
 
 struct Constants {
-    static let postsLimitPerPage: Int = 5
+    static let postsLimitPerPage: Int = 10
 }

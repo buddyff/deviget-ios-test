@@ -25,7 +25,7 @@ class MainViewController: UIViewController, MainProtocol {
     private var isPrevEnabled: Bool = false
     private var isNextEnabled: Bool = false
     
-    private let presenter: MainPresenter = MainPresenter(MainRepository())
+    private let presenter: MainPresenter = MainPresenter(MainRepository(), UserDefaultsManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()

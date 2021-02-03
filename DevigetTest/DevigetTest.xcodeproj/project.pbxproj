@@ -38,6 +38,9 @@
 		FB8A658225CA5DA50089414D /* MainViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A658125CA5DA50089414D /* MainViewControllerMock.swift */; };
 		FB8A659225CA5F7E0089414D /* MainRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A659125CA5F7E0089414D /* MainRepositoryMock.swift */; };
 		FB8A659725CA61800089414D /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A659625CA61800089414D /* MainPresenterTests.swift */; };
+		FBB0035E25CAF6B700AA6F25 /* MainMockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0035D25CAF6B700AA6F25 /* MainMockedData.swift */; };
+		FBB0036425CAFBE300AA6F25 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0036325CAFBE300AA6F25 /* UserDefaultsManager.swift */; };
+		FBB0036925CAFCE000AA6F25 /* UserDefaultsManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0036825CAFCE000AA6F25 /* UserDefaultsManagerMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		FB8A658125CA5DA50089414D /* MainViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerMock.swift; sourceTree = "<group>"; };
 		FB8A659125CA5F7E0089414D /* MainRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepositoryMock.swift; sourceTree = "<group>"; };
 		FB8A659625CA61800089414D /* MainPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTests.swift; sourceTree = "<group>"; };
+		FBB0035D25CAF6B700AA6F25 /* MainMockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMockedData.swift; sourceTree = "<group>"; };
+		FBB0036325CAFBE300AA6F25 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		FBB0036825CAFCE000AA6F25 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,7 @@
 				FB460BBF25C82C910061B74A /* DevigetTestTests.swift */,
 				FB460BC125C82C910061B74A /* Info.plist */,
 				FB8A657B25CA5CF30089414D /* MockSwift.swift */,
+				FBB0036825CAFCE000AA6F25 /* UserDefaultsManagerMock.swift */,
 			);
 			path = DevigetTestTests;
 			sourceTree = "<group>";
@@ -235,6 +242,7 @@
 				FB460C2125C86B700061B74A /* Extensions */,
 				FB460BFE25C83E0C0061B74A /* Logger */,
 				FB8A656B25C9B96D0089414D /* Constants.swift */,
+				FBB0036325CAFBE300AA6F25 /* UserDefaultsManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 				FB8A658125CA5DA50089414D /* MainViewControllerMock.swift */,
 				FB8A659125CA5F7E0089414D /* MainRepositoryMock.swift */,
 				FB8A659625CA61800089414D /* MainPresenterTests.swift */,
+				FBB0035D25CAF6B700AA6F25 /* MainMockedData.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -448,6 +457,7 @@
 				FB460C2325C86B810061B74A /* UIImageView+Extension.swift in Sources */,
 				FB460BA925C82C900061B74A /* AppDelegate.swift in Sources */,
 				FB460C3025C870AA0061B74A /* Date+Extension.swift in Sources */,
+				FBB0036425CAFBE300AA6F25 /* UserDefaultsManager.swift in Sources */,
 				FB460C3825C87DDF0061B74A /* SceneDelegate.swift in Sources */,
 				FB460C1425C84A6A0061B74A /* MainRepository.swift in Sources */,
 				FB460C0825C8437D0061B74A /* MainPresenter.swift in Sources */,
@@ -469,9 +479,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB460BC025C82C910061B74A /* DevigetTestTests.swift in Sources */,
+				FBB0035E25CAF6B700AA6F25 /* MainMockedData.swift in Sources */,
 				FB8A658225CA5DA50089414D /* MainViewControllerMock.swift in Sources */,
 				FB8A659725CA61800089414D /* MainPresenterTests.swift in Sources */,
 				FB8A659225CA5F7E0089414D /* MainRepositoryMock.swift in Sources */,
+				FBB0036925CAFCE000AA6F25 /* UserDefaultsManagerMock.swift in Sources */,
 				FB8A657C25CA5CF30089414D /* MockSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
