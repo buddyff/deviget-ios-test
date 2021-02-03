@@ -131,5 +131,12 @@ final class MainPresenter {
     func refreshTable() {
         currentPage = 0
         getTopPosts()
-    }    
+    }
+    
+    func openImage(forPostId: String) {
+        if let post = posts.first(where: { $0.id == forPostId}),
+           let url = URL(string: post.thumbnail ?? "") {
+            delegate?.openImageWith(url: url)
+        }
+    }
 }

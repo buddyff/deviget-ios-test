@@ -11,6 +11,7 @@ import Foundation
 class MainViewControllerMock: Mock, MainProtocol {
     
     var didCallReloadTable = MockCounter()
+    var didCallOpenImage = MockCounter()
     var posts: [PostCellInfo] = []
     var isPrevEnabled: Bool?
     var isNextEnabled: Bool?
@@ -20,6 +21,10 @@ class MainViewControllerMock: Mock, MainProtocol {
         self.isPrevEnabled = isPrevEnabled
         self.isNextEnabled = isNextEnabled
         didCallReloadTable.wasCalled()
+    }
+    
+    func openImageWith(url: URL) {
+        didCallOpenImage.wasCalled()
     }
     
     

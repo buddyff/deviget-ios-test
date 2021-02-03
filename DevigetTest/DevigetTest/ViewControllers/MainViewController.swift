@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainProtocol: AnyObject {
     func reloadTableWith(posts: [PostCellInfo], isPrevEnabled: Bool, isNextEnabled: Bool)
+    func openImageWith(url: URL)
 }
 
 class MainViewController: UIViewController, MainProtocol {
@@ -25,6 +26,7 @@ class MainViewController: UIViewController, MainProtocol {
     private var posts: [PostCellInfo] = []
     private var isPrevEnabled: Bool = false
     private var isNextEnabled: Bool = false
+    private var selectedPostID: String?
     
     private let presenter: MainPresenter = MainPresenter(MainRepository(), UserDefaultsManager())
 
@@ -38,12 +40,14 @@ class MainViewController: UIViewController, MainProtocol {
         table.dataSource = self
         table.delegate = self
         table.separatorInset = .zero
+        table.addSubview(refreshControl)
         
         presenter.delegate = self
         presenter.getTopPosts()
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        table.addSubview(refreshControl)
+        rightPanelPicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+        rightPanelPicture.isUserInteractionEnabled = true
         
         responsiveHelper(UIScreen.main.bounds.size)
     }
@@ -86,6 +90,15 @@ class MainViewController: UIViewController, MainProtocol {
     
     @objc private func refresh(sender: Any?) {
         presenter.refreshTable()
+    }
+    
+    @objc private func imageTapped(sender: Any?) {
+        guard let selectedPostID = selectedPostID else { return }
+        presenter.openImage(forPostId: selectedPostID)
+    }
+    
+    func openImageWith(url: URL) {
+        UIApplication.shared.open(url)
     }
 }
 
@@ -161,6 +174,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.item]
         
+        selectedPostID = post.id
         presenter.readPostWith(id: post.id)
         
         if !rightPanel.isHidden {

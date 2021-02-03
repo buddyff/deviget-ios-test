@@ -13,7 +13,7 @@ struct MainMockedData {
     static let firstPagePosts = PostList(
         data: PostListData(
             children: [
-                Post(data: PostData(author: "Rodrigo", title: "TestPost", comments: 0, thumbnail: nil, created: 10000000.1, id: "1")),
+                Post(data: PostData(author: "Rodrigo", title: "TestPost", comments: 0, thumbnail: "https://a.thumbs.redditmedia.com/Cff_tmYreQK6NfqyvWb7NJUCDsZ6ECTF4_-_H5M6tU4.jpg", created: 10000000.1, id: "1")),
                 Post(data: PostData(author: "Rodrigo", title: "TestPost", comments: 0, thumbnail: nil, created: 10000000.1, id: "2")),
                 Post(data: PostData(author: "Rodrigo", title: "TestPost", comments: 0, thumbnail: nil, created: 10000000.1, id: "3")),
                 Post(data: PostData(author: "Rodrigo", title: "TestPost", comments: 0, thumbnail: nil, created: 10000000.1, id: "4")),

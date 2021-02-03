@@ -167,4 +167,22 @@ class MainPresenterTests: XCTestCase {
         //Then
         XCTAssert(mockedVC.didCallReloadTable.timesCalled == 2, "Unexpected number of times called 'reloadTable'")
     }
+    
+    func testOpenImageInBrowser() {
+        //Given
+        let mockedVC = MainViewControllerMock()
+        let mockedRepository = MainRepositoryMock()
+        let mockedUserDefaults = UserDefaultsManagerMock()
+        let presenter = MainPresenter(mockedRepository, mockedUserDefaults)
+        presenter.delegate = mockedVC
+        
+        //When
+        presenter.getTopPosts()
+        presenter.openImage(forPostId: "1")
+        
+        //Then
+        XCTAssert(mockedVC.didCallReloadTable.timesCalled == 1, "Unexpected number of times called 'reloadTable'")
+        XCTAssert(mockedVC.didCallOpenImage.timesCalled == 1, "Unexpected number of times called 'openImage'")
+        XCTAssert(mockedVC.totalNumberOfCalls() == 2, "Unexpected number of functions called in VC")
+    }
 }
