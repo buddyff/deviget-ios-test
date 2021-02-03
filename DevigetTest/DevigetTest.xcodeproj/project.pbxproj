@@ -34,6 +34,10 @@
 		FB8A656C25C9B96D0089414D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A656B25C9B96D0089414D /* Constants.swift */; };
 		FB8A657225C9E6130089414D /* DismissAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8A657125C9E6130089414D /* DismissAllCell.xib */; };
 		FB8A657725C9E8020089414D /* DismissAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A657625C9E8020089414D /* DismissAllCell.swift */; };
+		FB8A657C25CA5CF30089414D /* MockSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A657B25CA5CF30089414D /* MockSwift.swift */; };
+		FB8A658225CA5DA50089414D /* MainViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A658125CA5DA50089414D /* MainViewControllerMock.swift */; };
+		FB8A659225CA5F7E0089414D /* MainRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A659125CA5F7E0089414D /* MainRepositoryMock.swift */; };
+		FB8A659725CA61800089414D /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A659625CA61800089414D /* MainPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,10 @@
 		FB8A656B25C9B96D0089414D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FB8A657125C9E6130089414D /* DismissAllCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DismissAllCell.xib; sourceTree = "<group>"; };
 		FB8A657625C9E8020089414D /* DismissAllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAllCell.swift; sourceTree = "<group>"; };
+		FB8A657B25CA5CF30089414D /* MockSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSwift.swift; sourceTree = "<group>"; };
+		FB8A658125CA5DA50089414D /* MainViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerMock.swift; sourceTree = "<group>"; };
+		FB8A659125CA5F7E0089414D /* MainRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepositoryMock.swift; sourceTree = "<group>"; };
+		FB8A659625CA61800089414D /* MainPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +164,10 @@
 		FB460BBE25C82C910061B74A /* DevigetTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				FB8A658025CA5D8A0089414D /* Main */,
 				FB460BBF25C82C910061B74A /* DevigetTestTests.swift */,
 				FB460BC125C82C910061B74A /* Info.plist */,
+				FB8A657B25CA5CF30089414D /* MockSwift.swift */,
 			);
 			path = DevigetTestTests;
 			sourceTree = "<group>";
@@ -287,6 +297,16 @@
 				FB8A657625C9E8020089414D /* DismissAllCell.swift */,
 			);
 			path = DismissAllCell;
+			sourceTree = "<group>";
+		};
+		FB8A658025CA5D8A0089414D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FB8A658125CA5DA50089414D /* MainViewControllerMock.swift */,
+				FB8A659125CA5F7E0089414D /* MainRepositoryMock.swift */,
+				FB8A659625CA61800089414D /* MainPresenterTests.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +469,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB460BC025C82C910061B74A /* DevigetTestTests.swift in Sources */,
+				FB8A658225CA5DA50089414D /* MainViewControllerMock.swift in Sources */,
+				FB8A659725CA61800089414D /* MainPresenterTests.swift in Sources */,
+				FB8A659225CA5F7E0089414D /* MainRepositoryMock.swift in Sources */,
+				FB8A657C25CA5CF30089414D /* MockSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

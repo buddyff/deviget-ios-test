@@ -11,31 +11,33 @@ final class MainPresenter {
     
     weak var delegate: MainProtocol?
     
-    private let repository: MainRepository = MainRepository()
+    private let repository: MainRepositoryProtocol
     private var posts: [PostCellInfo] = []
     private var currentPage: Int = 0
     private var currentNext: String?
     private var lastPage: Int?
     
+    required init(_ repository: MainRepositoryProtocol) {
+        self.repository = repository
+    }
+    
     func getTopPosts() {
         repository.getTopPosts() { [weak self] (result) in
             switch result {
-            case .success(let response):
-                DispatchQueue.main.async { [weak self] () in
-                    self?.posts = response.data.children.map { (post) -> PostCellInfo in
-                        let createdDate = post.data.created.toDate()
-                        let hoursDiff = Date().hoursDiff(date: createdDate)
-                        let isRead = UserDefaults.standard.bool(forKey: post.data.id)
-                        return PostCellInfo(from: post, read: isRead, hoursDiff: hoursDiff)
-                    }
-                    
-                    self?.currentNext = response.data.after
-                    
-                    let isNextEnabled = response.data.after != nil
-                    let filteredPosts = self?.posts.filter { !UserDefaults.standard.bool(forKey: "d\($0.id)") }
-                    
-                    self?.delegate?.reloadTableWith(posts: filteredPosts ?? [], isPrevEnabled: false, isNextEnabled: isNextEnabled)
-                }                
+            case .success(let response):                
+                self?.posts = response.data.children.map { (post) -> PostCellInfo in
+                    let createdDate = post.data.created.toDate()
+                    let hoursDiff = Date().hoursDiff(date: createdDate)
+                    let isRead = UserDefaults.standard.bool(forKey: post.data.id)
+                    return PostCellInfo(from: post, read: isRead, hoursDiff: hoursDiff)
+                }
+                
+                self?.currentNext = response.data.after
+                
+                let isNextEnabled = response.data.after != nil
+                let filteredPosts = self?.posts.filter { !UserDefaults.standard.bool(forKey: "d\($0.id)") }
+                
+                self?.delegate?.reloadTableWith(posts: filteredPosts ?? [], isPrevEnabled: false, isNextEnabled: isNextEnabled)
             case .failure(let error):
                 print(error)
             }

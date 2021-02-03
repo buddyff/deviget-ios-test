@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class MainRepository {
+protocol MainRepositoryProtocol {
+    func getTopPosts(callback: @escaping (Result<PostList>) -> Void)
+    func getNextTopPosts(after: String, callback: @escaping (Result<PostList>) -> Void)
+}
+
+final class MainRepository: MainRepositoryProtocol {
     
     private let connector: NetworkConnector = NetworkConnector<TopPostsConfigurations, PostList>()    
     

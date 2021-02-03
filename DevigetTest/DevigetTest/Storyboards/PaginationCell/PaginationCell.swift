@@ -10,6 +10,7 @@ import UIKit
 final class PaginationCell: UITableViewCell {
     
     @IBOutlet weak var previousBtn: UIButton!
+    @IBOutlet weak var pageNumberLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     
     private var prevCallback: (() -> Void)?

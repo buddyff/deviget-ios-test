@@ -23,6 +23,12 @@
                         </constraints>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-2a-FHB">
+                        <rect key="frame" x="245.5" y="40" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYA-Vu-b5x">
                         <rect key="frame" x="411" y="16" width="48" height="48"/>
                         <constraints>
@@ -34,14 +40,17 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="LYA-Vu-b5x" secondAttribute="trailing" constant="32" id="12t-UF-QOK"/>
+                    <constraint firstItem="daZ-2a-FHB" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="99t-bd-s7Z"/>
                     <constraint firstItem="u2m-2q-gLV" firstAttribute="leading" secondItem="W3G-qw-qx6" secondAttribute="leading" constant="32" id="QJP-81-szw"/>
                     <constraint firstItem="u2m-2q-gLV" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="eBl-jr-Tvc"/>
                     <constraint firstItem="LYA-Vu-b5x" firstAttribute="centerY" secondItem="W3G-qw-qx6" secondAttribute="centerY" id="gSW-w4-Zbj"/>
+                    <constraint firstItem="daZ-2a-FHB" firstAttribute="centerX" secondItem="W3G-qw-qx6" secondAttribute="centerX" id="lKt-go-bsW"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="nextBtn" destination="LYA-Vu-b5x" id="ESU-0f-djk"/>
+                <outlet property="pageNumberLabel" destination="daZ-2a-FHB" id="MA8-Bz-lXT"/>
                 <outlet property="previousBtn" destination="u2m-2q-gLV" id="O4m-1Q-jFG"/>
             </connections>
             <point key="canvasLocation" x="145.6521739130435" y="145.98214285714286"/>

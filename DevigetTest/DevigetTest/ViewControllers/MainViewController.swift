@@ -25,7 +25,7 @@ class MainViewController: UIViewController, MainProtocol {
     private var isPrevEnabled: Bool = false
     private var isNextEnabled: Bool = false
     
-    private let presenter: MainPresenter = MainPresenter()
+    private let presenter: MainPresenter = MainPresenter(MainRepository())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +58,12 @@ class MainViewController: UIViewController, MainProtocol {
     }
     
     func reloadTableWith(posts: [PostCellInfo], isPrevEnabled: Bool, isNextEnabled: Bool) {
-        self.posts = posts
-        self.isPrevEnabled = isPrevEnabled
-        self.isNextEnabled = isNextEnabled
-        table.reloadData()
+        DispatchQueue.main.async { [weak self] () in
+            self?.posts = posts
+            self?.isPrevEnabled = isPrevEnabled
+            self?.isNextEnabled = isNextEnabled
+            self?.table.reloadData()
+        }
     }
 
     private func responsiveHelper(_ size: CGSize) {
